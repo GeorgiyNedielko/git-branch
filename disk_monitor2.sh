@@ -1,20 +1,21 @@
+
 #!/bin/bash
 
 # Порог
 THRESHOLD=70
 
 # Email уведомления
-EMAIL="your_email@example.com"
+EMAIL="georgiynge2025@gmail.com"
 
 # Telegram уведомления
-BOT_TOKEN="123456789:ABCDEF_YOUR_BOT_TOKEN"
-CHAT_ID="123456789"
+BOT_TOKEN="8054960601:AAFk1KglVIOGZWrRd1fkL7B3E9y438X446I"
+CHAT_ID="810318156"
 
 # Временный файл для отчёта
 REPORT=$(mktemp)
 
 # Получаем процент использования корневого раздела
-USAGE=$(df / | awk 'NR==2 {gsub("%",""); print $5}')
+USAGE=$(df -P / | tail -1 | awk '{print $(NF-1)}' | tr -d '%')
 
 # Проверка
 if [ "$USAGE" -gt "$THRESHOLD" ]; then
