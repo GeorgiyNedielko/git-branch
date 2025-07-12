@@ -7,10 +7,6 @@ THRESHOLD=70
 # Email уведомления
 EMAIL="georgiynge2025@gmail.com"
 
-# Telegram уведомления
-BOT_TOKEN="8054960601:AAFk1KglVIOGZWrRd1fkL7B3E9y438X446I"
-CHAT_ID="810318156"
-
 # Временный файл для отчёта
 REPORT=$(mktemp)
 
@@ -33,12 +29,6 @@ if [ "$USAGE" -gt "$THRESHOLD" ]; then
         echo "✉️ mail не установлен — пропущено уведомление по email"
     fi
 
-    # Отправка Telegram
-    if [ -n "$BOT_TOKEN" ] && [ -n "$CHAT_ID" ]; then
-        curl -s -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-             -d chat_id="${CHAT_ID}" \
-             -d text="⚠️ Диск / заполнен на ${USAGE}%. Проверьте сервер!"
-    fi
 else
     echo "✅ Использование диска ($USAGE%) в норме"
 fi
