@@ -2,7 +2,7 @@
 #!/bin/bash
 
 # Порог
-THRESHOLD=20
+THRESHOLD=70
 
 # Email уведомления
 EMAIL="georgiynge2025@gmail.com"
